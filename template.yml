@@ -24,39 +24,263 @@ Globals:
       Role: !Ref CodeDeployRole
 
 Resources:
-  HelloWorld:
+  EntityFormation:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-HelloWorld'
-      Handler: index.handler
-      Runtime: python3.7
-      Role:
-        Fn::GetAtt:
-        - LambdaExecutionRole
-        - Arn
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-EntityFormation'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_formation_string_comparison_model:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+           - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 120
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      # Role:
+      #  Fn::GetAtt:
+      #  - LambdaExecutionRole
+      #  - Arn
       Events:
-        GetEvent:
-          Type: Api
-          Properties:
-            Path: /
-            Method: get
         PostEvent:
           Type: Api
           Properties:
-            Path: /
+            Path: /entity_formation_comparison
             Method: post
-  LambdaExecutionRole:
-    Description: Creating service role in IAM for AWS Lambda
-    Type: AWS::IAM::Role
+            Auth:
+              ApiKeyRequired: true
+
+  EntityFormationUpdatedThomas:
+    Type: AWS::Serverless::Function
     Properties:
-      RoleName: !Sub 'CodeStar-${ProjectId}-Execution${Stage}'
-      AssumeRolePolicyDocument:
-        Statement:
-        - Effect: Allow
-          Principal:
-            Service: [lambda.amazonaws.com]
-          Action: sts:AssumeRole
-      Path: /
-      ManagedPolicyArns:
-        - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
-      PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-EntityFormationUpdatedThomas'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_formation_model_updated_th:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 120
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /entity_formation_model_updated_th
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+ 
+  EntityCategoryClassifier:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-EntityCategoryClassifier'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_category_classifier:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      # Role:
+      #   Fn::GetAtt:
+      #   - LambdaExecutionRole
+      #   - Arn
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /classify_entity_category
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+ 
+  FaxAccuracyModel:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-FaxAccuracyModel'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/fax_accuracy_model:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      # Role:
+      #   Fn::GetAtt:
+      #   - LambdaExecutionRole
+      #   - Arn
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /fax_accuracy_model
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+
+  FaxModelDAO:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-FaxModelDAO'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/fax_model_dao:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /fax_model_dao
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+ 
+  TwilioCarrierLookup:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-TwilioCarrierLookup'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/twilio_carrier_lookup:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      # Role:
+      #   Fn::GetAtt:
+      #   - LambdaExecutionRole
+      #   - Arn
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /twilio_carrier_lookup
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+
+  LocationAddressIngestion:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-LocationAddressIngestion'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/locations_address_ingestion:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      # Role:
+      #   Fn::GetAtt:
+      #   - LambdaExecutionRole
+      #   - Arn
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /location-ingestion
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+
+  HCEConfidence:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-HCEConfidence'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/hce_confidence:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /score-hce
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+
+  ProviderLocationConfidence:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-ProviderLocationConfidence'
+      PackageType: Image
+      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/provider_location_confidence:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-00eff10d7106c42d5
+        SubnetIds:
+          - subnet-0f866dab5f3c71575
+          - subnet-0b8cb95074f4a02a0
+          - subnet-061957284c8c26daf
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /provider_location_confidence
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+
+  # LambdaExecutionRole:
+  #   Description: Creating service role in IAM for AWS Lambda
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     RoleName: !Sub 'CodeStar-${ProjectId}-Execution${Stage}'
+  #     AssumeRolePolicyDocument:
+  #       Statement:
+  #       - Effect: Allow
+  #         Principal:
+  #           Service: [lambda.amazonaws.com]
+  #         Action: sts:AssumeRole
+  #     Path: /
+  #     ManagedPolicyArns:
+  #       - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+  #     PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'

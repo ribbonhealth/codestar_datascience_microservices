@@ -1,0 +1,2 @@
+class HCEException(Exception):
+    pass
