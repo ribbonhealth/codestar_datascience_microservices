@@ -14,7 +14,7 @@ from polyfuzz.models import RapidFuzz
 import traceback
 import boto3
 
-DATASCIENCE_MICROSERVICES_BUCKET = "rh-datascience-microservices"
+DATASCIENCE_MICROSERVICES_BUCKET = "rh-ds-microservices"
 
 
 def get_s3_obj(bucket, path):

@@ -9,7 +9,7 @@ from locations_resolver import parse_address_components
 import boto3
 import io
 
-DATASCIENCE_MICROSERVICES_BUCKET = "rh-datascience-microservices"
+DATASCIENCE_MICROSERVICES_BUCKET = "rh-ds-microservices"
 
 
 def get_s3_obj(bucket, path):

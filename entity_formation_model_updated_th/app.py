@@ -19,7 +19,7 @@ esp = EntityStringParsing(
 
 import boto3
 
-DATASCIENCE_MICROSERVICES_BUCKET = "rh-datascience-microservices"
+DATASCIENCE_MICROSERVICES_BUCKET = "rh-ds-microservices"
 
 
 aff = affine.Affine()

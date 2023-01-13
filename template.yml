@@ -29,17 +29,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-EntityFormation'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_formation_string_comparison_model:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_formation_string_comparison_model:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-           - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 120
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       # Role:
       #  Fn::GetAtt:
       #  - LambdaExecutionRole
@@ -58,17 +63,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-EntityFormationUpdatedThomas'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_formation_model_updated_th:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_formation_model_updated_th:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 120
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       Events:
         PostEvent:
           Type: Api
@@ -83,17 +93,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-EntityCategoryClassifier'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_category_classifier:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/entity_category_classifier:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       # Role:
       #   Fn::GetAtt:
       #   - LambdaExecutionRole
@@ -112,17 +127,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-FaxAccuracyModel'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/fax_accuracy_model:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/fax_accuracy_model:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       # Role:
       #   Fn::GetAtt:
       #   - LambdaExecutionRole
@@ -141,17 +161,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-FaxModelDAO'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/fax_model_dao:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/fax_model_dao:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       Events:
         PostEvent:
           Type: Api
@@ -166,17 +191,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-TwilioCarrierLookup'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/twilio_carrier_lookup:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/twilio_carrier_lookup:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       # Role:
       #   Fn::GetAtt:
       #   - LambdaExecutionRole
@@ -195,17 +225,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-LocationAddressIngestion'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/locations_address_ingestion:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/locations_address_ingestion:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       # Role:
       #   Fn::GetAtt:
       #   - LambdaExecutionRole
@@ -224,17 +259,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-HCEConfidence'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/hce_confidence:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/hce_confidence:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       Events:
         PostEvent:
           Type: Api
@@ -249,17 +289,22 @@ Resources:
     Properties:
       FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-ProviderLocationConfidence'
       PackageType: Image
-      ImageUri: '741242253094.dkr.ecr.us-west-2.amazonaws.com/datascience/provider_location_confidence:${ImageTag}'
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/provider_location_confidence:${ImageTag}'
       VpcConfig:
         SecurityGroupIds:
-          - sg-00eff10d7106c42d5
+          - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0f866dab5f3c71575
-          - subnet-0b8cb95074f4a02a0
-          - subnet-061957284c8c26daf
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
-      Role: arn:aws:iam::741242253094:role/rh_dev_lambda_role
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
       Events:
         PostEvent:
           Type: Api
