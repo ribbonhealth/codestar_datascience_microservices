@@ -36,6 +36,7 @@ def get_env_var(varname):
         val = os.environ[varname]
         return val
 
+    print(f"Couldn't find {varname} in local envars - using secrets manager")
     secret_name = 'DS_MS_SECRETS'  # "dev-internal-tool-secrets"
     client = get_boto_session().client(service_name='secretsmanager')
     secret_vars_dict = ast.literal_eval(client.get_secret_value(SecretId=secret_name)['SecretString'])
@@ -55,7 +56,7 @@ def get_env_var(varname):
 def norm_db_conn():
     # DB_NORMALIZED_USER = "temp_external_user"
     DB_NORMALIZED_USER = get_env_var(varname='DB_NORMALIZED_USER')
-    DB_NORMALIZED_HOST = get_env_var(varname='DB_NORMALIZED_HOST')
+    DB_NORMALIZED_HOST = get_env_var(varname='DB_NORMALIZED_HOST_RW')
     DB_NORMALIZED_NAME = get_env_var(varname='DB_NORMALIZED_NAME')
     DB_NORMALIZED_PASSWORD = get_env_var(varname='DB_NORMALIZED_PASSWORD')
     # DB_NORMALIZED_USER = os.environ['DB_NORMALIZED_USER']
@@ -79,7 +80,7 @@ def norm_db_conn():
 def norm_db_reader_conn():
     # DB_NORMALIZED_USER = "temp_external_user"
     DB_NORMALIZED_USER = get_env_var(varname='DB_NORMALIZED_USER')
-    DB_NORMALIZED_HOST = get_env_var(varname='DB_NORMALIZED_HOST')
+    DB_NORMALIZED_HOST = get_env_var(varname='DB_NORMALIZED_HOST_RO')
     DB_NORMALIZED_NAME = get_env_var(varname='DB_NORMALIZED_NAME')
     DB_NORMALIZED_PASSWORD = get_env_var(varname='DB_NORMALIZED_PASSWORD')
     # DB_NORMALIZED_USER = os.environ['DB_NORMALIZED_USER']
@@ -89,13 +90,14 @@ def norm_db_reader_conn():
 
     login = "postgresql://{0}:{1}@{2}:5432/{3}".format(DB_NORMALIZED_USER, DB_NORMALIZED_PASSWORD,
                                                        DB_NORMALIZED_HOST, DB_NORMALIZED_NAME)
+    print(DB_NORMALIZED_HOST, DB_NORMALIZED_USER)
 
     return create_engine(login)
 
 
 def rapid_db_conn():
     DB_NORMALIZED_USER = get_env_var(varname='DB_RAPID_USER')
-    DB_NORMALIZED_HOST =  get_env_var(varname='DB_RAPID_HOST')
+    DB_NORMALIZED_HOST =  get_env_var(varname='DB_RAPID_HOST_RW')
     DB_NORMALIZED_NAME = get_env_var(varname='DB_RAPID_NAME')
     DB_NORMALIZED_PASSWORD = get_env_var(varname='DB_RAPID_PASSWORD')
     login = "postgresql://{0}:{1}@{2}:5432/{3}".format(DB_NORMALIZED_USER, DB_NORMALIZED_PASSWORD,
