@@ -185,7 +185,37 @@ Resources:
             Method: post
             Auth:
               ApiKeyRequired: true
- 
+
+  ProviderLinkingModelDAO:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'awscodestar-${ProjectId}-lambda-ProviderLinkingModelDAO'
+      PackageType: Image
+      ImageUri: '404889086824.dkr.ecr.us-west-2.amazonaws.com/datascience/provider_location_confidence:${ImageTag}'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-08594884ff07fbaf4
+        SubnetIds:
+          - subnet-0cb7fc3f7aeb0017a
+          - subnet-0a6b9d79fe0ad65c7
+          - subnet-0f2523f5ad3b8bb90
+          - subnet-0d0c646c1072914ba
+          - subnet-06b9dd1ae0ebc8551
+          - subnet-0c7236f56a97e6fea
+          - subnet-062cce0d22cc50ede
+          - subnet-0f9ca37a92ab1beba
+      Timeout: 60
+      MemorySize: 2048
+      Role: arn:aws:iam::404889086824:role/rh_dev_lambda_role
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /provider_linking_model_dao
+            Method: post
+            Auth:
+              ApiKeyRequired: true
+
   TwilioCarrierLookup:
     Type: AWS::Serverless::Function
     Properties:
