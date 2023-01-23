@@ -92,7 +92,7 @@ def geocode_address(full_address):
     GOOGLE_SEARCH_URL = f"https://maps.googleapis.com/maps/api/geocode/json?%s&key={GOOGLE_MAPS_KEY}"
     google_search_request = GOOGLE_SEARCH_URL % (urllib.parse.urlencode({"address": full_address}))
 
-    raw_response = json.loads(requests.get(google_search_request).text)
+    raw_response = json.loads(requests.get(google_search_request, timeout=30).text)
     return raw_response
 
 
