@@ -93,6 +93,7 @@ def geocode_address(full_address):
     google_search_request = GOOGLE_SEARCH_URL % (urllib.parse.urlencode({"address": full_address}))
 
     raw_response = json.loads(requests.get(google_search_request, timeout=30).text)
+    print(raw_response)
     return raw_response
 
 
