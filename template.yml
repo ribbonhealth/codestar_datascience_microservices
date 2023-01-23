@@ -22,6 +22,21 @@ Globals:
       Enabled: true
       Type: Canary10Percent5Minutes
       Role: !Ref CodeDeployRole
+    Environment:
+      Variables:
+        DB_RAPID_USER: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_RAPID_USER}}'
+        DB_RAPID_PASSWORD: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_RAPID_PASSWORD}}'
+        DB_RAPID_HOST_RW: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_RAPID_HOST_RW}}'
+        DB_RAPID_HOST_RO: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_RAPID_HOST_RO}}'
+        DB_RAPID_NAME: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_RAPID_NAME}}'
+        DB_NORMALIZED_USER: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_NORMALIZED_USER}}'
+        DB_NORMALIZED_PASSWORD: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_NORMALIZED_PASSWORD}}'
+        DB_NORMALIZED_HOST_RW: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_NORMALIZED_HOST_RW}}'
+        DB_NORMALIZED_HOST_RO: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_NORMALIZED_HOST_RO}}'
+        DB_NORMALIZED_NAME: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:DB_NORMALIZED_NAME}}'
+        GOOGLE_MAPS_KEY: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:GOOGLE_MAPS_KEY}}'
+        TWILIO_AUTH_TOKEN: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:TWILIO_AUTH_TOKEN}}'
+        TWILIO_ACCT_SID: '{{resolve:secretsmanager:DS_MS_SECRETS:SecretString:TWILIO_ACCT_SID}}'
 
 Resources:
   EntityFormation:
