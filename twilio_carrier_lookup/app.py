@@ -6,33 +6,24 @@ from sqlalchemy import create_engine
 from datetime import datetime
 import boto3
 import ast
+import os
 
 SECRETS_PREFIX = "dev-lambda-"
 SECRETS_NORM = f"{SECRETS_PREFIX}norm"
 SECRETS_TWILIO = f"{SECRETS_PREFIX}twilio"
 
 
-# TODO(anewla): this should be converted over to the common paradigm being used across ribbon aws infra
-def get_secrets(secret_id):
-    session = boto3.Session(region_name='us-west-2')
-    client = session.client(service_name='secretsmanager')
-    secrets_info_response = client.get_secret_value(SecretId=secret_id)
-    return ast.literal_eval(str(secrets_info_response['SecretString']))
-
-
-def get_norm_secrets(secret_id):
-    info_dict = get_secrets(secret_id)
+def get_norm_secrets():
     return (
-        info_dict["username"],
-        info_dict['password'],
-        info_dict['host'],
-        info_dict['dbname']
+        os.environ['DB_NORMALIZED_USER'],
+        os.environ['DB_NORMALIZED_PASSWORD'],
+        os.environ['DB_NORMALIZED_HOST_RW'],
+        os.environ['DB_NORMALIZED_NAME'],
     )
 
 
-def get_twilio_secrets(secret_id):
-    info_dict = get_secrets(secret_id)
-    return info_dict["account_sid"], info_dict["auth_token"],
+def get_twilio_secrets():
+    return os.environ["TWILIO_ACCT_SID"], os.environ["TWILIO_AUTH_TOKEN"],
 
 
 def clean_phones(phone_number):
@@ -46,8 +37,8 @@ def clean_phones(phone_number):
         return clean_number
 
 
-def norm_connection(secrets_norm=SECRETS_NORM):
-    login = "postgresql://{0}:{1}@{2}:5432/{3}".format(*get_norm_secrets(secrets_norm))
+def norm_connection():
+    login = "postgresql://{0}:{1}@{2}:5432/{3}".format(*get_norm_secrets())
     return create_engine(login)
 
 def check_existing_phones(phone_number, conn):
@@ -66,7 +57,7 @@ def append_new_phone(twilio_response, engine):
     twilio_response.to_sql("twilio_phones", engine, if_exists='append', index=False)
 
 
-def get_twilio_lookup_data(phone_number, engine, secrets_twilio=SECRETS_TWILIO):
+def get_twilio_lookup_data(phone_number, engine):
     """
     returns Twilio "carrier" lookup call response for given phone number
 
@@ -76,7 +67,7 @@ def get_twilio_lookup_data(phone_number, engine, secrets_twilio=SECRETS_TWILIO):
         'error_code')
     """
 
-    account_sid, auth_token = get_twilio_secrets(secrets_twilio)
+    account_sid, auth_token = get_twilio_secrets()
 
     resp = {'phone': phone_number}
     try:
