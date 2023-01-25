@@ -49,13 +49,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 120
       MemorySize: 2048
@@ -83,13 +79,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 120
       MemorySize: 2048
@@ -113,13 +105,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -147,13 +135,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -181,13 +165,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -211,13 +191,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -241,13 +217,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -275,13 +247,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -309,13 +277,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
@@ -339,13 +303,9 @@ Resources:
         SecurityGroupIds:
           - sg-08594884ff07fbaf4
         SubnetIds:
-          - subnet-0cb7fc3f7aeb0017a
           - subnet-0a6b9d79fe0ad65c7
-          - subnet-0f2523f5ad3b8bb90
-          - subnet-0d0c646c1072914ba
           - subnet-06b9dd1ae0ebc8551
           - subnet-0c7236f56a97e6fea
-          - subnet-062cce0d22cc50ede
           - subnet-0f9ca37a92ab1beba
       Timeout: 60
       MemorySize: 2048
