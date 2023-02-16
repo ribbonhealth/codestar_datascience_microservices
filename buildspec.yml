@@ -31,7 +31,6 @@ phases:
       - pushd twilio_carrier_lookup; ./deploy.sh $IMAGE_TAG; popd
       - pushd locations_address_ingestion; ./deploy.sh $IMAGE_TAG; popd
       - pushd hce_confidence; ./deploy.sh $IMAGE_TAG; popd
-      - pushd provider_location_confidence; ./deploy.sh $IMAGE_TAG; popd
       - pushd provider_linking_model; ./deploy.sh $IMAGE_TAG; popd
       # - codebuild-breakpoint
       # Use AWS SAM to package the application by using AWS CloudFormation
