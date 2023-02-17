@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/python:3.7
+FROM amazon/aws-lambda-python:3.8
 
 
 COPY requirements.txt ./
