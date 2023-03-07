@@ -5,6 +5,10 @@ from pydantic import BaseModel, ValidationError
 from typing import Optional, List, Dict
 import uuid as uuid_pkg
 
+filename = 'Classifiers/gbLinkModel_V5_3_0_202303071012.model'
+link_model = pickle.load(open(filename, 'rb'))
+
+
 class ModelInput(BaseModel):
     """Input into provider linking model."""
     ratings_count: Optional[int] = None
@@ -48,13 +52,10 @@ def get_provider_linking_score(inputs: List[ModelInput]):
     df_features['address_source_count'] = df_features['address_sources'].str.len()
     df_features['phone_source_count'] = df_features['phone_sources'].str.len()
 
-    filename = 'Classifiers/gbLinkModel_V5_2_5_202212151519.model'
-    link_model = pickle.load(open(filename, 'rb'))
-
     link_output = df_features
     link_output['model_score'] = link_model.predict_proba(df_features)[:, 1]
-    link_output['model_version'] = '5.2.5'
-    link_output['notes'] = "Linking Model V5.2.5 for Precompute compiled on Dec 13, 2022."
+    link_output['model_version'] = '5.3.0'
+    link_output['notes'] = "Linking Model V5.3.0 for Precompute compiled on March 6, 2022."
 
     # create confidence scores
     thresh = [0, 0.4, 0.6, 0.8, 1.01]
@@ -84,7 +85,7 @@ def handler(event, context):
         return {'statusCode': 500,
                 'body': json.dumps(str(e)),
                 'headers': {'Content-Type': 'application/json'}}
-#
+
 # test_data = """{
 #     "features":
 # [{
