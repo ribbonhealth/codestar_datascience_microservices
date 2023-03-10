@@ -5,9 +5,8 @@ from pydantic import BaseModel, ValidationError
 from typing import Optional, List, Dict
 import uuid as uuid_pkg
 
-filename = 'Classifiers/gbLinkModel_V5_3_0_202303071012.model'
+filename = 'Classifiers/gbLinkModel_V5_3_0_202303101616.model'
 link_model = pickle.load(open(filename, 'rb'))
-
 
 class ModelInput(BaseModel):
     """Input into provider linking model."""
@@ -44,18 +43,19 @@ def get_provider_linking_score(inputs: List[ModelInput]):
     :param inputs: list of model inputs for the model
     :return: output, model score and confidence bin
     """
+    identifiers = ['provider_node_uuid', 'location_cpli', 'phone_number']
     # create dataframe from input
     df_features = pd.DataFrame([input.dict() for input in inputs])
 
+    df_features['source_count'] = df_features['sources'].apply(lambda x: len(x))
+    df_features['address_source_count'] = df_features['address_sources'].apply(lambda x: len(x))
+    df_features['phone_source_count'] = df_features['phone_sources'].apply(lambda x: len(x))
 
-    df_features['source_count'] = df_features['sources'].str.len()
-    df_features['address_source_count'] = df_features['address_sources'].str.len()
-    df_features['phone_source_count'] = df_features['phone_sources'].str.len()
-
-    link_output = df_features
+    link_output = df_features.copy(deep=True)
+    df_features = df_features.drop(columns=identifiers)
     link_output['model_score'] = link_model.predict_proba(df_features)[:, 1]
     link_output['model_version'] = '5.3.0'
-    link_output['notes'] = "Linking Model V5.3.0 for Precompute compiled on March 6, 2022."
+    link_output['notes'] = "Linking Model V5.3.0 for Precompute compiled on March 6, 2023."
 
     # create confidence scores
     thresh = [0, 0.4, 0.6, 0.8, 1.01]
