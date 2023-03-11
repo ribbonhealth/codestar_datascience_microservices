@@ -103,26 +103,26 @@ def handler(event, context):
                 'headers': {'Content-Type': 'application/json'}}
 
 
-
-test_data = """{
-    "features":
-[{
-            "node_1_uuid": "06998ae8-2231-4c9a-8539-20e27c9c3360",
-            "node_2_uuid": "48ebd1e7-1e54-489d-9fd6-fb547a695ef4",
-            "intermediate_node_uuid": 3761184,
-            "provider__ratings_avg": 4.3,
-            "provider__ratings_count": 3,
-            "provider__service_location__source_ids": [3, 7],
-            "provider__provider_types": ["Doctor", "Nursing"],
-            "provider__specialties": ["aff0d1a2-5fbe-41cb-a854-270c03528a43", "475b20fc-c188-4ca1-8e3a-b0614b8f8ce2"],
-            "service_location__location_types": [],
-            "service_location__confidence": 4,
-            "service_location__location_category_score": 0.6385194529609867,
-            "provider__address__phone_numbers": [{"phone": "9019427456", "details": "primary"}],
-            "service_location__phone_numbers": [{"phone": "9019427456", "score": 0.3403787878787879, "detail": "primary"}]
-
-}]}
-"""
-resp = handler({"body": test_data}, None)
-print(resp)
-
+#
+# test_data = """{
+#     "features":
+# [{
+#             "node_1_uuid": "06998ae8-2231-4c9a-8539-20e27c9c3360",
+#             "node_2_uuid": "48ebd1e7-1e54-489d-9fd6-fb547a695ef4",
+#             "intermediate_node_uuid": 3761184,
+#             "provider__ratings_avg": 4.3,
+#             "provider__ratings_count": 3,
+#             "provider__service_location__source_ids": [3, 7],
+#             "provider__provider_types": ["Doctor", "Nursing"],
+#             "provider__specialties": ["aff0d1a2-5fbe-41cb-a854-270c03528a43", "475b20fc-c188-4ca1-8e3a-b0614b8f8ce2"],
+#             "service_location__location_types": [],
+#             "service_location__confidence": 4,
+#             "service_location__location_category_score": 0.6385194529609867,
+#             "provider__address__phone_numbers": [{"phone": "9019427456", "details": "primary"}],
+#             "service_location__phone_numbers": [{"phone": "9019427456", "score": 0.3403787878787879, "detail": "primary"}]
+#
+# }]}
+# """
+# resp = handler({"body": test_data}, None)
+# print(resp)
+#
